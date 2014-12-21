@@ -1,8 +1,5 @@
 # Config file to run hit merging on TTBar samples
 
-# Configurables
-runMergeHit = True
-
 import FWCore.ParameterSet.Config as cms
 
 process = cms.Process('RECO')
