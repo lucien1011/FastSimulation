@@ -1,27 +1,27 @@
-To setup the hit merger package:
+##Setup Hit Merging Package
 
 ```shell
 cmsrel CMSSW_7_2_0_pre1
-
 cd CMSSW_7_2_0_pre1/src/
-
 cmsenv
-
 git clone git@github.com:lucien1011/FastSimulation.git
-
 scram b -j 8
 ```
 
 ----------------
 
-To run hit merging, as an example, look at FastSimulation/Test/:
+##Run Hit Merging
+
+As an example, look at FastSimulation/Test/:
 First, run TTbar_Tauola_13TeV_cfi_GEN_SIM.py to produce a GEN-SIM file:
 
 ```shell
 cmsRun FastSimulation/Test/TTbar_Tauola_13TeV_cfi_GEN_SIM.py
+```
 
 Then, run SingleTracking.py over the output of TTbar_Tauola_13TeV_cfi_GEN_SIM.py
 
+```shell
 cmsRun FastSimulation/Test/SingleTracking.py
 ```
 
