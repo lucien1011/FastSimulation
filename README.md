@@ -36,7 +36,7 @@ The EDProducer for the hit merger is added to FastSimulation/TrackingRecHitProdu
 Notice that to run the hit merging I have modified: 
 ```shell
 FastSimulation/Tracking/python/TrackCandidateProducer_cfi.py
-FastSimulation/Tracking/python/TrackCandidateProducer_cfi.py
+FastSimulation/Tracking/python/TrajectorySeedProducer_cfi.py
 ```
 
 in which the line
