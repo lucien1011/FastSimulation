@@ -23,6 +23,12 @@ Then, run SingleTracking.py over the output of TTbar_Tauola_13TeV_cfi_GEN_SIM.py
 cmsRun FastSimulation/Test/SingleTracking.py
 ```
 
+##Changing the merging distance
+change in here:
+```shell
+FastSimulation/TrackingRecHitProducer/python/RecHitMerger_cfi.py
+```
+
 ##Some information
 
 The EDProducer for the hit merger is added to FastSimulation/TrackingRecHitProducer/src/, as RecHitMerger.cc.
