@@ -8,8 +8,6 @@ git clone git@github.com:lucien1011/FastSimulation.git
 scram b -j 8
 ```
 
-----------------
-
 ##Run Hit Merging
 
 As an example, look at FastSimulation/Test/:
@@ -25,11 +23,9 @@ Then, run SingleTracking.py over the output of TTbar_Tauola_13TeV_cfi_GEN_SIM.py
 cmsRun FastSimulation/Test/SingleTracking.py
 ```
 
-----------------
+##Some information
 
 The EDProducer for the hit merger is added to FastSimulation/TrackingRecHitProducer/src/, as RecHitMerger.cc.
-
-----------------
 
 Notice that to run the hit merging I have modified: 
 ```shell
