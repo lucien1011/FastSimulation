@@ -24,7 +24,7 @@ cmsRun FastSimulation/Test/SingleTracking.py
 ```
 
 ##Changing the merging distance
-change in here:
+change the parameter mergedist in here:
 ```shell
 FastSimulation/TrackingRecHitProducer/python/RecHitMerger_cfi.py
 ```
