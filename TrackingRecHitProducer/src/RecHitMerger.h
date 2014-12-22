@@ -46,6 +46,7 @@ public:
 
 	//merge-hit function
 	bool passmerge(const SiTrackerGSMatchedRecHit2D& rechit1, const SiTrackerGSMatchedRecHit2D& rechit2);
+	SiTrackerGSMatchedRecHit2D mergehit(const SiTrackerGSMatchedRecHit2D& rechit1, const SiTrackerGSMatchedRecHit2D& rechit2);
 	double mergedist;
 
 	//process

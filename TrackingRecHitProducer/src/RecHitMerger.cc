@@ -58,6 +58,31 @@ bool RecHitMerger::passmerge(const SiTrackerGSMatchedRecHit2D& rechit1, const Si
 	};
 };
 
+SiTrackerGSMatchedRecHit2D RecHitMerger::mergehit(const SiTrackerGSMatchedRecHit2D& rechit1, const SiTrackerGSMatchedRecHit2D& rechit2){
+
+	//averaged position
+	float newx = 0.5*(rechit1.localPosition().x()+rechit2.localPosition().x());
+	float newy = 0.5*(rechit1.localPosition().y()+rechit2.localPosition().y());
+	float newz = 0.5*(rechit1.localPosition().z()+rechit2.localPosition().z());
+
+	LocalPoint newpos(newx,newy,newz);
+
+	//add error by quadratrue
+	float xx1 = rechit1.localPositionError().xx();
+	float yy1 = rechit1.localPositionError().yy();
+	float xx2 = rechit2.localPositionError().xx();
+	float yy2 = rechit2.localPositionError().yy();
+	float newxx = xx1+xx2;
+	float newyy = yy1+yy2;
+	LocalError newerr(newxx,0.0,newyy);
+
+	SiTrackerGSMatchedRecHit2D newhit(newpos, newerr, *(rechit1.det()), 
+		rechit1.simhitId(),rechit1.simtrackId(),rechit1.eeId(),rechit1.cluster(),rechit1.simMultX(),rechit1.simMultY());
+
+	return newhit;
+
+};
+
 
 void RecHitMerger::beginRun(edm::Run const& run, const edm::EventSetup & es){
 	std::cout << "Merging Hits" << std::endl;
@@ -88,24 +113,8 @@ void RecHitMerger::produce(edm::Event& e, const edm::EventSetup& c){
 			if (passmerge(*ihit,*jhit) and ihit!=jhit) {
 				shouldmerge = true;
 
-				//averaged position
-				float newx = 0.5*(ihit->localPosition().x()+jhit->localPosition().x());
-				float newy = 0.5*(ihit->localPosition().y()+jhit->localPosition().y());
-				float newz = 0.5*(ihit->localPosition().z()+jhit->localPosition().z());
+				SiTrackerGSMatchedRecHit2D newhit = mergehit(*ihit,*jhit);
 
-				LocalPoint newpos(newx,newy,newz);
-
-				//add error by quadratrue
-				float xx1 = ihit->localPositionError().xx();
-				float yy1 = ihit->localPositionError().yy();
-				float xx2 = jhit->localPositionError().xx();
-				float yy2 = jhit->localPositionError().yy();
-				float newxx = xx1+xx2;
-				float newyy = yy1+yy2;
-				LocalError newerr(newxx,0.0,newyy);
-
-				SiTrackerGSMatchedRecHit2D newhit(newpos, newerr, *(ihit->det()), 
-					ihit->simhitId(),ihit->simtrackId(),ihit->eeId(),ihit->cluster(),ihit->simMultX(),ihit->simMultY());
 				MergeRecHits[newhit.simtrackId()].push_back(newhit);
 
 			};
