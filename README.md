@@ -28,10 +28,11 @@ change the parameter mergedist in here:
 ```shell
 FastSimulation/TrackingRecHitProducer/python/RecHitMerger_cfi.py
 ```
+The default distance is 1.5cm, as shown in this file. This number is just for testing purpose and has to be further investigated.
 
 ##Some information
 
-The EDProducer for the hit merger is added to FastSimulation/TrackingRecHitProducer/src/, as RecHitMerger.cc.
+The EDProducer for the hit merger is added to FastSimulation/TrackingRecHitProducer/src/, as RecHitMerger.cc. The function passmerge reads two rechits and compare their distance. If the distance is larger than the mergedist in RecHitMerger_cfi.py, then the two rechits will be merged.
 
 Notice that to run the hit merging I have modified: 
 ```shell
