@@ -32,7 +32,7 @@ The default distance is 1.5cm, as shown in this file. This number is just for te
 
 ##Some information
 
-The EDProducer for the hit merger is added to FastSimulation/TrackingRecHitProducer/src/, as RecHitMerger.cc. The function passmerge reads two rechits and compare their distance. If the distance is larger than the mergedist in RecHitMerger_cfi.py, then the two rechits will be merged by the function mergehit.
+The EDProducer for the hit merger is added to FastSimulation/TrackingRecHitProducer/src/, as RecHitMerger.cc. The function passmerge reads two rechits and compare their distance. If the distance is larger than the mergedist in RecHitMerger_cfi.py, then the two rechits will be merged by the function mergehit, which produces a newhit from two input rechits by averaging their positions and adding their errors by quadrature.
 
 Notice that to run the hit merging I have modified: 
 ```shell
